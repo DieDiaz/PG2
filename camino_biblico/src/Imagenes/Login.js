@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import './Login.css';
 
 function Login() {
     const [nombre, setNombre] = useState('');
     const [contraseña, setContraseña] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate(); // Usa useNavigate para la redirección
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,7 +15,7 @@ function Login() {
             const response = await axios.post('http://localhost:5000/login', { nombre, contraseña });
             const { token } = response.data;
             localStorage.setItem('token', token);
-            // Redirige al usuario o muestra un mensaje de éxito
+            navigate('/usuario'); // Redirige a la página de Usuario
         } catch (err) {
             setError(err.response ? err.response.data.message : 'Error en la solicitud');
         }

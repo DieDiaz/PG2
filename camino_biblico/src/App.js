@@ -1,34 +1,28 @@
 import './App.css';
-import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Inicio from './Imagenes/Inicio';
 import Login from './Imagenes/Login';
- 
+import Usuario from './Imagenes/Usuario';
+import Layout from './Imagenes/layout'; // Asegúrate de que la ruta sea correcta
 
 function App() {
-  const [activeSection, setActiveSection] = useState('');
-
-  const handleNavigation = (section) => {
-    setActiveSection(section);
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <nav className="navbar">
-          <ul className="nav-list">
-            <li className="nav-item"><a href="#home" onClick={() => handleNavigation('Inicio')}>Inicio</a></li>
-            <li className="nav-item"><a href="#info" onClick={() => handleNavigation('Anuncios')}>Anuncios</a></li>
-            <li className="nav-item"><a href="#fecha" onClick={() => handleNavigation('Calendario')}>Calendario</a></li>
-            <li className="nav-item"><a href="#material" onClick={() => handleNavigation('Material')}>Material</a></li>
-            <div className="nav-spacer"></div>
-            <li className="nav-item"><a href="#option1" onClick={() => handleNavigation('Ingreso')}>Ingreso</a></li>
-            <li className="nav-item"><a href="#option2" onClick={() => handleNavigation('Registro')}>Registro</a></li>
-          </ul>
-        </nav>
-        {activeSection === 'Inicio' && <Inicio />}
-        {activeSection === 'Ingreso' && <Login />}
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Rutas que utilizan el Layout */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Inicio />} />
+          <Route path="anuncios" element={<div>Anuncios</div>} />
+          <Route path="calendario" element={<div>Calendario</div>} />
+          <Route path="material" element={<div>Material</div>} />
+          <Route path="login" element={<Login />} />
+          <Route path="registro" element={<div>Registro</div>} />
+        </Route>
+
+        {/* Ruta que no utiliza el Layout */}
+        <Route path="usuario" element={<Usuario />} />
+      </Routes>
+    </Router>
   );
 }
 

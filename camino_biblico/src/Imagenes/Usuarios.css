@@ -1,0 +1,34 @@
+.fondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:1800px; /* Ajusta este valor según el tamaño del cuadro que desees */
+    height: 860px; /* Ajusta este valor según el tamaño del cuadro que desees */
+    background-color: #f0f0f0;
+    margin: 20px auto; /* Ajusta el margen según lo que necesites, 'auto' centra el cuadro horizontalmente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opcional: Agrega una sombra para darle más estilo */
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    gap: 80px; /* Aumenta el espacio entre los elementos */
+    width: 600px; /* Ajusta el ancho para permitir tres elementos por fila */
+    margin: 0 auto; /* Centra el menú horizontalmente */
+  }
+  
+  .menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px; /* Ajusta el ancho de cada elemento según sea necesario */
+    text-align: center;
+  }
+  
+  .menu-item span {
+    margin-top: 10px; /* Ajusta el margen superior si es necesario */
+    font-size: 18px; /* Ajusta el tamaño de la fuente si es necesario */
+    color: #333;
+  }
+  
